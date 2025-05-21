@@ -7,7 +7,19 @@ export default function Header() {
   const images = [
     {
       src: "/logophoto.jpg",
-      description: "Empowering communities through information and action",
+      description: "UDI Volunteers",
+    },
+     {
+      src: "/netballcarol.jpg",
+      description: "Netball for health",
+    },
+    {
+      src: "/Carol1.jpg",
+      description: "Carol giving out presents to the winners",
+    },
+    {
+      src: "/championstraining.jpg",
+      description: "Champions training at Savannah Hohel",
     },
     {
       src: "/meetings.jpg",
@@ -15,7 +27,7 @@ export default function Header() {
     },
     {
       src: "/champions.jpg",
-      description: "Youth leadership in action through our champions program",
+      description: "Peer leadership in action through our champions program",
     },
   ];
 

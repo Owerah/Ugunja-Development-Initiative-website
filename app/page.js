@@ -5,6 +5,7 @@ import Projects from './_components/Projects/Projects'
 import Footer from './_components/Footer/Footer'
 import OurTeam from './_components/Our Team/OurTeam'
 import Contacts from './_components/Contacts/Contacts'
+import Donate from './_components/Donate/Donate'
 
 function page() {
   return (
@@ -12,6 +13,7 @@ function page() {
       <Navbar />
       <Header />
       <Projects />
+      <Donate />
       <OurTeam />
       <Contacts />
       <Footer />
