@@ -1,73 +1,111 @@
-"use client"; // Ensures animations work in Next.js App Router
+"use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const images = [
-    "/logophoto.jpg", // Replace with your image paths
-    "/meetings.jpg", // Second image
-    "/champions.jpg", // Third image
+    {
+      src: "/logophoto.jpg",
+      description: "Empowering communities through information and action",
+    },
+    {
+      src: "/meetings.jpg",
+      description: "Community engagement and inclusive planning",
+    },
+    {
+      src: "/champions.jpg",
+      description: "Youth leadership in action through our champions program",
+    },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timeoutRef = useRef(null);
 
-  // Cycle through images every 5 seconds
+  const nextSlide = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, [images.length]);
+    if (!isPaused) {
+      timeoutRef.current = setTimeout(nextSlide, 4000);
+    }
+    return () => clearTimeout(timeoutRef.current);
+  }, [currentImageIndex, isPaused]);
 
   return (
-    <header 
-      className="relative bg-cover bg-center bg-no-repeat text-white py-20 px-4 text-center"
-      style={{
-        backgroundImage: `url(${images[currentImageIndex]})`,
-        transition: "background-image 1s ease-in-out", // Smooth transition effect
-      }}
-    >
-      {/* Dark Overlay for Better Readability */}
-      <div className="absolute inset-0 bg-slate-900 bg-opacity-50"></div>
+    <header className="w-full bg-blue-200">
+      <div className="flex flex-col md:flex-row items-stretch min-h-[600px]">
+        {/* Left Section */}
+        <div className="md:w-1/2 w-full flex flex-col justify-center bg-gradient-to-br from-white via-sky-100 to-sky-200 p-8 md:p-16">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="space-y-6"
+          >
+            <h1 className="text-4xl md:text-5xl font-extrabold text-purple-800 leading-tight">
+              Our Vision & Mission
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700">
+              <strong className="text-pink-800">Vision:</strong> A well-informed and empowered society.
+            </p>
+            <p className="text-lg md:text-xl text-gray-700">
+              <strong className="text-pink-800">Mission:</strong> To empower marginalized populations by enhancing their capacity to effectively use available resources for their own development.
+            </p>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition">
+                <h3 className="text-lg font-bold text-purple-700">Education</h3>
+                <p className="text-sm text-gray-600">Mentorship and life skills education</p>
+              </div>
+              <div className="bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition">
+                <h3 className="text-lg font-bold text-purple-700">Healthcare</h3>
+                <p className="text-sm text-gray-600">Water, Sanitation, and Hygiene</p>
+              </div>
+              <div className="bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition">
+                <h3 className="text-lg font-bold text-purple-700">Empowerment</h3>
+                <p className="text-sm text-gray-600">
+                  Support for women, youth & small businesses
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
-      {/* Vision & Mission Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative bg-white bg-opacity-70 backdrop-blur-lg p-8 rounded-lg inline-block max-w-4xl mx-auto"
-      >
-        <h1 className="text-4xl font-bold text-purple-800">Our Vision & Mission</h1>
-        <p className="mt-4 text-lg text-gray-800">
-          <strong className="text-pink-800">Vision:</strong> A well-informed and empowered society.
-        </p>
-        <p className="text-lg text-gray-800">
-          <strong className="text-pink-800">Mission:</strong> To empower marginalized populations by enhancing their capacity to effectively use available resources for their own development.
-        </p>
-      </motion.div>
-
-      {/* Focused Areas Section */}
-      <motion.div
-        className="relative mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >
-        <div className="bg-blue-600 text-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold">Education</h3>
-          <p>Mentorship and life skills education</p>
+        {/* Right Section - Slideshow */}
+        <div
+          className="md:w-1/2 w-full relative h-[400px] md:h-auto overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={images[currentImageIndex].src}
+              initial={{ x: "100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${images[currentImageIndex].src})`,
+                filter: "brightness(65%)",
+              }}
+            >
+              <motion.div
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="absolute bottom-8 w-full text-center px-6"
+              >
+                <p className="text-lg md:text-2xl font-medium bg-black bg-opacity-40 text-white px-4 py-3 rounded-lg inline-block max-w-xl mx-auto">
+                  {images[currentImageIndex].description}
+                </p>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <div className="bg-blue-600 text-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold">Healthcare</h3>
-          <p>Water, Sanitation, and Hygiene</p>
-        </div>
-        <div className="bg-blue-600 text-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold">Economic Empowerment</h3>
-          <p>Supporting small businesses, vocational training, and women's empowerment.</p>
-        </div>
-      </motion.div>
+      </div>
     </header>
   );
 }

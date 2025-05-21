@@ -4,6 +4,7 @@ import Header from './_components/Header/Header'
 import Projects from './_components/Projects/Projects'
 import Footer from './_components/Footer/Footer'
 import OurTeam from './_components/Our Team/OurTeam'
+import Contacts from './_components/Contacts/Contacts'
 
 function page() {
   return (
@@ -12,6 +13,7 @@ function page() {
       <Header />
       <Projects />
       <OurTeam />
+      <Contacts />
       <Footer />
     </main>
   )

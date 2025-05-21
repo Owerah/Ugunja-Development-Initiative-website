@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "#projects", label: "Projects" },
     { href: "#about", label: "About Us" },
-    { href: "/contact", label: "Contact" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (
@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo + Organization Name */}
         <div className="flex items-center space-x-3">
-          <Image src="/logo.jpg" alt="Logo" width={48} height={48} />
+          <Image src="/logo.jpg" alt="Logo" width={96} height={96} />
           <h1 className="text-lg font-bold">
             <span className="ugunja">UGUNJA</span> 
             <span className="development-initiative">  DEVELOPMENT INITIATIVE</span>

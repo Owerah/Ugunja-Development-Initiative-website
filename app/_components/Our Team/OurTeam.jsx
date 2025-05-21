@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 export default function OurTeam() {
   const teamMembers = [
-    { name: "Mr. Cornel Onyango Onyimbo", image: "/CORNEL-1.webp" },
     { name: "Miss. Ruth Atieno Okoth", image: "/ruth.webp" },
-    { name: "Mr. David Oduor Pedo", image: "/pedo.webp" },
+    { name: "Mss. Riziki Mulama", image: "/RIZIKI.webp" },
+    { name: "Mr. Vincent Omondi", image: "/Photo.PNG" },
   ];
 
   return (

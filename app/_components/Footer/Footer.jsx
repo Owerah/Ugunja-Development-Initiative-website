@@ -3,68 +3,69 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className='py-16 bg-sky-200'>
-        <div className='container'>
-           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-4'>
-              {/* First section */}
-              <div className='space-y-4 max-w-[300px]'>
-                <h1 className='text-2xl font-bold'>The coding journey</h1>
-                <p className='text-dark'>
-                   UGUNJA
-                </p>
-              </div>
-              {/* Second section */}
-              <div className='grid grid-cols-2 gap-10'>
-                <div className='space-y-4'>
-                    <h1 className='text-2xl font-bold'>SERVICES</h1>
-                    <div className='text-dark'>
-                        <ul className='space-y-2 text-lg'>
-                            <li className='cursor-pointer hover:text-secondary duration-200'></li>
-                            <li className='cursor-pointer hover:text-secondary duration-200'></li>
-                            <li className='cursor-pointer hover:text-secondary duration-200'></li>
-                            <li className='cursor-pointer hover:text-secondary duration-200'></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                  <div className='space-y-4'>
-                    <h1 className='text-2xl font-bold'>Links</h1>
-                    <div className='text-dark'>
-                        <ul className='space-y-2 text-lg'>
-                            <li className='cursor-pointer hover:text-secondary duration-200'>Home</li>
-                            <li className='cursor-pointer hover:text-secondary duration-200'>Services</li>
-                            <li className='cursor-pointer hover:text-secondary duration-200'>About</li>
-                            <li className='cursor-pointer hover:text-secondary duration-200'>Contact</li>
-                        </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Third section  */}
-              <div className='space-y-4 max-w-[300px]'>
-                <h1 className='text-2xl font-bold'>Get In Touch</h1>
-                <div className='flex items-center'>
-                    <input type='text' placeholder='vincentomondi0041@gmail.com' className='p-1/2 rounded-s bg-white w-full py-4
-                    focus:ring-0 focus:outline-none placeholder:text-dark2'/>
-                    <button className='bg-primary text-white font-semibold py-4 px-6 rounded-e-xl'>Go</button>
-                </div>
-                {/* Social icons */}
-                <div className='flex space-x-6 py-3'>
-                    <a href="https://chat.whatsapp.com/HyXDEtvH37jCiZts5BtUSB">
-                        <FaWhatsapp className='cursor-pointer text-4xl hover:text-primary hover:scale-105 duration-200'/>
-                    </a>
-                    <a href="https://www.instagram.com/vincentowerah">
-                        <FaInstagram className='cursor-pointer text-4xl hover:text-primary hover:scale-105 duration-200'/>
-                    </a>
-                    <a href="https://www.facebook.com/mister.vincent.2023">
-                        <FaFacebook className='cursor-pointer text-4xl hover:text-primary hover:scale-105 duration-200'/>
-                    </a>
-                </div>
-              </div>
-           </div>
+    <footer className="bg-sky-200 py-12 text-gray-800">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Brand Section */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4">UGUNJA DEVELOPMENT INITIATIVE</h2>
+          <p className="text-sm">
+            Empowering communities through health, education, and advocacy.
+          </p>
         </div>
+
+        {/* Services Section */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4">Services</h3>
+          <ul className="space-y-2 text-base">
+            <li className="hover:text-purple-700 transition cursor-pointer">Adolescent Health</li>
+            <li className="hover:text-purple-700 transition cursor-pointer">Community Empowerment</li>
+            <li className="hover:text-purple-700 transition cursor-pointer">Youth Mentorship</li>
+          </ul>
+        </div>
+
+        {/* Navigation Links */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4">Links</h3>
+          <ul className="space-y-2 text-base">
+            <li className="hover:text-purple-700 transition cursor-pointer">Home</li>
+            <li className="hover:text-purple-700 transition cursor-pointer">Services</li>
+            <li className="hover:text-purple-700 transition cursor-pointer">About</li>
+            <li className="hover:text-purple-700 transition cursor-pointer">Contact</li>
+          </ul>
+        </div>
+
+        {/* Contact Section */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4">Get In Touch</h3>
+          <div className="flex mb-4">
+            <input
+              type="text"
+              placeholder="info@ugunjadevelopmentinitiative.org"
+              className="w-full px-4 py-2 rounded-l-md focus:outline-none"
+            />
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition">
+              Go
+            </button>
+          </div>
+          <div className="flex items-center space-x-4 text-2xl">
+            <a href="https://chat.whatsapp.com/HyXDEtvH37jCiZts5BtUSB" target="_blank" rel="noopener noreferrer">
+              <FaWhatsapp className="hover:text-green-600 transition" />
+            </a>
+            <a href="https://www.instagram.com/vincentowerah" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="hover:text-pink-600 transition" />
+            </a>
+            <a href="https://www.facebook.com/mister.vincent.2023" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className="hover:text-blue-800 transition" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center text-sm mt-12 text-gray-600">
+        &copy; {new Date().getFullYear()} Ugunja Development Initiative. All rights reserved.
+      </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Projects() {
   const projects = [
-    { image: "pads.jpg", title: "Menstral Hygiene" },
+    { image: "pads.jpg", title: "Menstrual Hygiene Management" },
     { image: "champions.jpg", title: "Champions Program" },
     { image: "cleaning.jpg", title: "Environmental Conservation" },
     { image: "parents.jpg", title: "Parents Outreach" }
@@ -44,7 +44,7 @@ export default function Projects() {
             />
             {/* Title under the image */}
             <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 text-center">
-              <h3 className="text-lg font-bold">{project.title}</h3>
+              <h3 className="text-sm font-bold">{project.title}</h3>
             </div>
           </motion.div>
         ))}
